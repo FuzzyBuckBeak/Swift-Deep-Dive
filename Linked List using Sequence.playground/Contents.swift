@@ -4,6 +4,7 @@ var str = "Implementing sequence"
 
 enum LinkedList<T> {
     case tail
+    //recursive enum
     indirect case node(val: T, next: LinkedList)
     
     init(array: [T]) {
