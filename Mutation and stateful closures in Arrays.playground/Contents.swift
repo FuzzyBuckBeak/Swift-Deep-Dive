@@ -2,7 +2,7 @@ import UIKit
 
 var str = "Internal implementation of closures"
 
-extension Array {
+extension Array where Element: Equatable {
     func accumulate<Result>(_ initialResult: Result, _ nextPartialResult: (Result, Element) -> Result) -> [Result] {
         var runningValue = initialResult
         return map { next in
@@ -34,6 +34,14 @@ extension Array {
         }
         return result
     }
+    
+    func index(of element:Element) -> Int? {
+        for index in self.indices where self[index] == element {
+            return index
+        }
+        return nil
+    }
+    
 }
 
 var fib = [1, 2, 3, 4, 5]
