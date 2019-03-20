@@ -26,7 +26,34 @@ extension Array {
         }
         return runningValue
     }
+
+    func flatMap<T>(_ transform: (Element) -> [T]) -> [T] {
+        var result: [T] = []
+        for element in self {
+            result.append(contentsOf: transform(element))
+        }
+        return result
+    }
 }
 
 var fib = [1, 2, 3, 4, 5]
 print(fib.accumulate(0, +))
+
+print (fib.reduce(0) { (sum, number) -> Int in
+    return sum + number
+})
+
+var array = [["♠︎", "♥︎", "♣︎", "♦︎"], ["J","Q","K","A"]]
+print(array.flatMap { (string) -> [String] in
+    return string
+})
+
+print(array.flatMap {$0})
+
+let suits = ["♠︎", "♥︎", "♣︎", "♦︎"]
+let ranks = ["J","Q","K","A"]
+let result = suits.flatMap { suit in
+    ranks.map { rank in
+    (suit, rank)
+    }
+}
