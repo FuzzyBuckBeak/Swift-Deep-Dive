@@ -38,7 +38,7 @@ class QueuedLinkedList<Key, Value> {
         }
         
         temphead.previous = node
-        node.next = head
+        node.next = temphead
         head = node
         return node
     }
